@@ -1,5 +1,13 @@
 import 'package:flutter/material.dart';
 
+// Sahypalaryňyzy birikdirýäris
+import 'DeryaGidrawlika.dart';
+import 'EkinBazasy.dart';
+import 'GpsCalculator.dart';
+import 'SuwaryshPlan.dart';
+import 'Wodosliw.dart';
+import 'YapGidrawlika.dart';
+
 void main() {
   runApp(const GidroKalkulyatorApp());
 }
@@ -10,6 +18,7 @@ class GidroKalkulyatorApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       home: const App(),
     );
   }
@@ -25,16 +34,16 @@ class App extends StatefulWidget {
 class _AppState extends State<App> {
   String activeTab = 'GPS';
 
-  // Sahypa görkeziji logika
+  // Sahypa görkeziji logika - her biri öz faýlyna bagly
   Widget _renderContent() {
     switch (activeTab) {
-      case 'GPS': return const Center(child: Text("GPS Kalkulýator sahypasy"));
-      case 'Derýa': return const Center(child: Text("Derýa Gidrawlika sahypasy"));
-      case 'Yap': return const Center(child: Text("Yap Gidrawlika sahypasy"));
-      case 'Suwarysh': return const Center(child: Text("Suwaryş Plan sahypasy"));
-      case 'Wodosliw': return const Center(child: Text("Wodosliw sahypasy"));
-      case 'Ekin': return const Center(child: Text("Ekin Bazasy sahypasy"));
-      default: return const Center(child: Text("GPS Kalkulýator"));
+      case 'GPS': return const GpsCalculator();
+      case 'Derýa': return const DeryaGidrawlika();
+      case 'Yap': return const YapGidrawlika();
+      case 'Suwarysh': return const SuwaryshPlan();
+      case 'Wodosliw': return const Wodosliw();
+      case 'Ekin': return const EkinBazasy();
+      default: return const GpsCalculator();
     }
   }
 
@@ -62,7 +71,7 @@ class _AppState extends State<App> {
               child: const Text("Düzüji: Meňli Asyrowa"),
             ),
 
-            // Tab Bar
+            // Tab Bar - Sahypa mazmuny
             Expanded(
               child: _renderContent(),
             ),
