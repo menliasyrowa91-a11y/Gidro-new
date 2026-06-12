@@ -1,3 +1,8 @@
+// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
+
+/* * Düzüji: Meňli Aşyrowa 
+ */
+
 import 'package:flutter/material.dart';
 import 'dart:math';
 
@@ -27,7 +32,19 @@ class _WodosliwState extends State<Wodosliw> {
     final valPtk = double.tryParse(_ptkController.text);
 
     if (valB == null || valH == null || valM == null || valNorma == null || valPtk == null) {
-      showDialog(context: context, builder: (ctx) => AlertDialog(title: const Text("Ýalňyşlyk"), content: const Text("Hemme sanlary dogry giriziň!"), actions: [TextButton(onPressed: () => Navigator.pop(ctx), child: const Text("OK"))]));
+      showDialog(
+        context: context,
+        builder: (ctx) => AlertDialog(
+          title: const Text("Ýalňyşlyk"),
+          content: const Text("Hemme sanlary dogry giriziň!"),
+          actions: [
+            TextButton(
+              onPressed: () => Navigator.pop(ctx),
+              child: const Text("OK"),
+            )
+          ],
+        ),
+      );
       return;
     }
 
@@ -56,30 +73,62 @@ class _WodosliwState extends State<Wodosliw> {
         padding: const EdgeInsets.all(20),
         child: Column(
           children: [
-            const Text("Wodosliw Hasaby", style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
+            const Text(
+              "Wodosliw Hasaby",
+              style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+            ),
             const SizedBox(height: 15),
-            TextField(controller: _bController, decoration: const InputDecoration(labelText: "Wodosliw ini (b)"), keyboardType: TextInputType.number),
-            TextField(controller: _hController, decoration: const InputDecoration(labelText: "Suw beýikligi (H)"), keyboardType: TextInputType.number),
-            TextField(controller: _meydanController, decoration: const InputDecoration(labelText: "Meýdan (ga)"), keyboardType: TextInputType.number),
-            TextField(controller: _normaController, decoration: const InputDecoration(labelText: "Suw norma"), keyboardType: TextInputType.number),
-            TextField(controller: _ptkController, decoration: const InputDecoration(labelText: "PTK (0.85)"), keyboardType: TextInputType.number),
+            TextField(
+              controller: _bController,
+              decoration: const InputDecoration(labelText: "Wodosliw ini (b)"),
+              keyboardType: TextInputType.number,
+            ),
+            TextField(
+              controller: _hController,
+              decoration: const InputDecoration(labelText: "Suw beýikligi (H)"),
+              keyboardType: TextInputType.number,
+            ),
+            TextField(
+              controller: _meydanController,
+              decoration: const InputDecoration(labelText: "Meýdan (ga)"),
+              keyboardType: TextInputType.number,
+            ),
+            TextField(
+              controller: _normaController,
+              decoration: const InputDecoration(labelText: "Suw norma"),
+              keyboardType: TextInputType.number,
+            ),
+            TextField(
+              controller: _ptkController,
+              decoration: const InputDecoration(labelText: "PTK (0.85)"),
+              keyboardType: TextInputType.number,
+            ),
             const SizedBox(height: 20),
             ElevatedButton(
               onPressed: _calculate,
-              style: ElevatedButton.styleFrom(backgroundColor: const Color(0xFF059669), foregroundColor: Colors.white),
+              style: ElevatedButton.styleFrom(
+                backgroundColor: const Color(0xFF059669),
+                foregroundColor: Colors.white,
+              ),
               child: const Text("HASAPLA"),
             ),
             if (_qLSek != null)
               Container(
                 margin: const EdgeInsets.only(top: 20),
                 padding: const EdgeInsets.all(15),
-                decoration: BoxDecoration(color: const Color(0xFFf0fdf4), borderRadius: BorderRadius.circular(8)),
+                decoration: BoxDecoration(
+                  color: const Color(0xFFf0fdf4),
+                  borderRadius: BorderRadius.circular(8),
+                ),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text("Sekuntda alnan suw: $_qLSek l/sek"),
                     Text("Jemi suw (Brutto): $_jemiSuwBrutto m³"),
-                    Text("Hakyky suwaryş wagty: $_wagtSagat sagat", style: const TextStyle(fontWeight: FontWeight.bold)),
+                    Text(
+                      "Hakyky suwaryş wagty: $_wagtSagat sagat",
+                      style: const TextStyle(fontWeight: FontWeight.bold),
+                    ),
                   ],
                 ),
               ),
