@@ -1,3 +1,8 @@
+// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
+
+/* * Düzüji: Meňli Aşyrowa 
+ */
+
 import 'package:flutter/material.dart';
 
 class Ekin {
@@ -8,14 +13,14 @@ class Ekin {
   Ekin({required this.ady, required this.norma, required this.kpd});
 }
 
-class EkinBazasy extends StatefulWidget {
-  const EkinBazasy({super.key});
+class Ekinbazasy extends StatefulWidget {
+  const Ekinbazasy({super.key});
 
   @override
-  State<EkinBazasy> createState() => _EkinBazasyState();
+  State<Ekinbazasy> createState() => _EkinbazasyState();
 }
 
-class _EkinBazasyState extends State<EkinBazasy> {
+class _EkinbazasyState extends State<Ekinbazasy> {
   // Ekinleriň sanawy
   final List<Ekin> ekinler = [
     Ekin(ady: "Gowaça", norma: 2700, kpd: 0.85),
@@ -34,7 +39,10 @@ class _EkinBazasyState extends State<EkinBazasy> {
         padding: const EdgeInsets.all(20),
         child: Column(
           children: [
-            const Text("Ekin Bazasy", style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
+            const Text(
+              "Ekin Bazasy",
+              style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+            ),
             const SizedBox(height: 20),
             
             // Ekinleri saýlamak üçin Dropdown
@@ -61,11 +69,17 @@ class _EkinBazasyState extends State<EkinBazasy> {
             if (_selectedEkin != null)
               Container(
                 padding: const EdgeInsets.all(15),
-                decoration: BoxDecoration(color: Colors.blue[50], borderRadius: BorderRadius.circular(10)),
+                decoration: BoxDecoration(
+                  color: Colors.blue[50],
+                  borderRadius: BorderRadius.circular(10),
+                ),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text("Ady: ${_selectedEkin!.ady}", style: const TextStyle(fontWeight: FontWeight.bold)),
+                    Text(
+                      "Ady: ${_selectedEkin!.ady}",
+                      style: const TextStyle(fontWeight: FontWeight.bold),
+                    ),
                     Text("Norma: ${_selectedEkin!.norma} m³/ga"),
                     Text("KPD: ${_selectedEkin!.kpd}"),
                   ],
