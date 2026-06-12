@@ -5,13 +5,13 @@
 
 import 'package:flutter/material.dart';
 
-// Sahypalaryňyzy birikdirýäris
-import 'deryagidrawlika.dart';
-import 'ekinbazasy.dart';
+// Terminaldaky faýl atlaryňyz bilen gabat gelýän importlar
+import 'derya_giwrawlika.dart';
+import 'ekin_bazasy.dart';
 import 'gps_calculator.dart';
 import 'suwarysh_plan.dart';
 import 'wodosliw.dart';
-import 'yapgidrawlika.dart';
+import 'yap_gidrawlika.dart';
 
 void main() {
   runApp(const GidroKalkulyatorApp());
@@ -45,15 +45,15 @@ class _AppState extends State<App> {
       case 'GPS':
         return const GpsCalculator();
       case 'Derýa':
-        return const Deryagidrawlika();
+        return const DeryaGiwrawlika();
       case 'Yap':
-        return const Yapgidrawlika();
+        return const YapGidrawlika();
       case 'Suwarysh':
         return const SuwaryshPlan();
       case 'Wodosliw':
         return const Wodosliw();
       case 'Ekin':
-        return const Ekinbazasy();
+        return const EkinBazasy();
       default:
         return const GpsCalculator();
     }
