@@ -1,3 +1,8 @@
+// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
+
+/* * Düzüji: Meňli Aşyrowa 
+ */
+
 import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';
 import 'dart:math';
@@ -16,7 +21,9 @@ class _GpsCalculatorState extends State<GpsCalculator> {
     bool serviceEnabled = await Geolocator.isLocationServiceEnabled();
     if (!serviceEnabled) {
       if (!mounted) return;
-      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text("GPS hyzmaty öçüriklidir!")));
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(content: Text("GPS hyzmaty öçüriklidir!")),
+      );
       return;
     }
 
@@ -36,18 +43,36 @@ class _GpsCalculatorState extends State<GpsCalculator> {
       });
 
       if (!mounted) return;
-      ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-        content: Text("Nokat goşuldy: Takyklyk ${position.accuracy.toStringAsFixed(1)}m"),
-      ));
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text(
+            "Nokat goşuldy: Takyklyk ${position.accuracy.toStringAsFixed(1)}m",
+          ),
+        ),
+      );
     } catch (e) {
       if (!mounted) return;
-      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text("GPS signal tapylmady!")));
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(content: Text("GPS signal tapylmady!")),
+      );
     }
   }
 
   void calculatePreciseArea() {
     if (points.length < 3) {
-      showDialog(context: context, builder: (ctx) => AlertDialog(title: const Text("Ýalňyşlyk"), content: const Text("Azyndan 3 nokat goşuň!"), actions: [TextButton(onPressed: () => Navigator.pop(ctx), child: const Text("OK"))]));
+      showDialog(
+        context: context,
+        builder: (ctx) => AlertDialog(
+          title: const Text("Ýalňyşlyk"),
+          content: const Text("Azyndan 3 nokat goşuň!"),
+          actions: [
+            TextButton(
+              onPressed: () => Navigator.pop(ctx),
+              child: const Text("OK"),
+            )
+          ],
+        ),
+      );
       return;
     }
 
@@ -57,7 +82,8 @@ class _GpsCalculatorState extends State<GpsCalculator> {
     for (int i = 0; i < points.length; i++) {
       Position p1 = points[i];
       Position p2 = points[(i + 1) % points.length];
-      area += (p2.longitude * pi / 180 - p1.longitude * pi / 180) * (2 + sin(p1.latitude * pi / 180) + sin(p2.latitude * pi / 180));
+      area += (p2.longitude * pi / 180 - p1.longitude * pi / 180) *
+          (2 + sin(p1.latitude * pi / 180) + sin(p2.latitude * pi / 180));
     }
 
     area = (area * R * R / 2.0).abs();
@@ -68,8 +94,15 @@ class _GpsCalculatorState extends State<GpsCalculator> {
       context: context,
       builder: (ctx) => AlertDialog(
         title: const Text("Ölçeýşiň Netijesi"),
-        content: Text("Meýdan:\n\n$ga gektar\n$sotuk sotuk\n(${area.toStringAsFixed(0)} m²)"),
-        actions: [TextButton(onPressed: () => Navigator.pop(ctx), child: const Text("OK"))],
+        content: Text(
+          "Meýdan:\n\n$ga gektar\n$sotuk sotuk\n(${area.toStringAsFixed(0)} m²)",
+        ),
+        actions: [
+          TextButton(
+            onPressed: () => Navigator.pop(ctx),
+            child: const Text("OK"),
+          )
+        ],
       ),
     );
   }
@@ -81,11 +114,28 @@ class _GpsCalculatorState extends State<GpsCalculator> {
         padding: const EdgeInsets.all(20),
         child: Column(
           children: [
-            ElevatedButton(onPressed: addPoint, child: const Text("Nokat Goş")),
+            ElevatedButton(
+              onPressed: addPoint,
+              child: const Text("Nokat Goş"),
+            ),
             const SizedBox(height: 10),
-            ElevatedButton(onPressed: calculatePreciseArea, style: ElevatedButton.styleFrom(backgroundColor: Colors.green, foregroundColor: Colors.white), child: const Text("Takyk Hasapla")),
+            ElevatedButton(
+              onPressed: calculatePreciseArea,
+              style: ElevatedButton.styleFrom(
+                backgroundColor: Colors.green,
+                foregroundColor: Colors.white,
+              ),
+              child: const Text("Takyk Hasapla"),
+            ),
             const SizedBox(height: 10),
-            ElevatedButton(onPressed: () => setState(() => points.clear()), style: ElevatedButton.styleFrom(backgroundColor: Colors.red, foregroundColor: Colors.white), child: const Text("Arassala")),
+            ElevatedButton(
+              onPressed: () => setState(() => points.clear()),
+              style: ElevatedButton.styleFrom(
+                backgroundColor: Colors.red,
+                foregroundColor: Colors.white,
+              ),
+              child: const Text("Arassala"),
+            ),
             const SizedBox(height: 20),
             Text("Goşulan nokatlar: ${points.length}"),
           ],
