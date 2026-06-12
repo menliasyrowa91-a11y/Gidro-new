@@ -1,12 +1,17 @@
+// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
+
+/* * Düzüji: Meňli Aşyrowa 
+ */
+
 import 'package:flutter/material.dart';
 
 // Sahypalaryňyzy birikdirýäris
-import 'DeryaGidrawlika.dart';
-import 'EkinBazasy.dart';
-import 'GpsCalculator.dart';
-import 'SuwaryshPlan.dart';
-import 'Wodosliw.dart';
-import 'YapGidrawlika.dart';
+import 'deryagidrawlika.dart';
+import 'ekinbazasy.dart';
+import 'gps_calculator.dart';
+import 'suwarysh_plan.dart';
+import 'wodosliw.dart';
+import 'yapgidrawlika.dart';
 
 void main() {
   runApp(const GidroKalkulyatorApp());
@@ -34,16 +39,23 @@ class App extends StatefulWidget {
 class _AppState extends State<App> {
   String activeTab = 'GPS';
 
-  // Sahypa görkeziji logika - her biri öz faýlyna bagly
+  // Sahypa görkeziji logika
   Widget _renderContent() {
     switch (activeTab) {
-      case 'GPS': return const GpsCalculator();
-      case 'Derýa': return const DeryaGidrawlika();
-      case 'Yap': return const YapGidrawlika();
-      case 'Suwarysh': return const SuwaryshPlan();
-      case 'Wodosliw': return const Wodosliw();
-      case 'Ekin': return const EkinBazasy();
-      default: return const GpsCalculator();
+      case 'GPS':
+        return const GpsCalculator();
+      case 'Derýa':
+        return const Deryagidrawlika();
+      case 'Yap':
+        return const Yapgidrawlika();
+      case 'Suwarysh':
+        return const SuwaryshPlan();
+      case 'Wodosliw':
+        return const Wodosliw();
+      case 'Ekin':
+        return const Ekinbazasy();
+      default:
+        return const GpsCalculator();
     }
   }
 
@@ -60,15 +72,18 @@ class _AppState extends State<App> {
               child: Column(
                 children: [
                   Image.asset('assets/icon.png', width: 100, height: 100),
-                  const Text("Gidrokalkulyator", style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold)),
+                  const Text(
+                    "Gidrokalkulyator",
+                    style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+                  ),
                 ],
               ),
             ),
-            
+
             // Düzüji maglumaty
             Container(
               padding: const EdgeInsets.symmetric(vertical: 10),
-              child: const Text("Düzüji: Meňli Asyrowa"),
+              child: const Text("Düzüji: Meňli Aşyrowa"),
             ),
 
             // Tab Bar - Sahypa mazmuny
@@ -112,7 +127,10 @@ class _AppState extends State<App> {
           color: isActive ? Colors.blue : Colors.grey[200],
           borderRadius: BorderRadius.circular(10),
         ),
-        child: Text(title, style: TextStyle(color: isActive ? Colors.white : Colors.black)),
+        child: Text(
+          title,
+          style: TextStyle(color: isActive ? Colors.white : Colors.black),
+        ),
       ),
     );
   }
