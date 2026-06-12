@@ -1,10 +1,7 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
 
-/* * Düzüji: Meňli Aşyrowa 
- */
-
 import 'package:flutter/material.dart';
-import 'package:gidro_new/ekinbazasy.dart'; // Ekin klasynyň ýerleşýän ýeri
+import 'package:gidro_new/ekinbazasy.dart'; 
 
 class SuwaryshPlan extends StatefulWidget {
   const SuwaryshPlan({super.key});
@@ -17,7 +14,6 @@ class _SuwaryshPlanState extends State<SuwaryshPlan> {
   final TextEditingController _meydanController = TextEditingController(text: '10');
   final TextEditingController _qController = TextEditingController(text: '0.15');
 
-  // Ekin görnüşini saýlamak üçin başlangyç baha
   Ekin _selectedEkin = Ekin(ady: "Gowaça", norma: 2700, kpd: 0.85);
 
   final List<Ekin> ekinListesi = [
@@ -49,7 +45,6 @@ class _SuwaryshPlanState extends State<SuwaryshPlan> {
       return;
     }
 
-    // Hasaplaýyş
     final t = (valM * _selectedEkin.norma) / (valQ * 3600 * _selectedEkin.kpd);
 
     showDialog(
@@ -76,15 +71,13 @@ class _SuwaryshPlanState extends State<SuwaryshPlan> {
         padding: const EdgeInsets.all(20),
         child: Column(
           children: [
-            const Text(
-              "Suwaryş Meýilnamasy",
-              style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-            ),
+            const Text("Suwaryş Meýilnamasy", style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
             const SizedBox(height: 15),
             const Text("Ekin görnüşini saýlaň:"),
             Wrap(
               alignment: WrapAlignment.center,
-              children: ekinListesi.map((ekin) {
+              // Bu ýerde .cast<Widget>() goşuldy
+              children: ekinListesi.map<Widget>((ekin) {
                 bool isSelected = _selectedEkin.ady == ekin.ady;
                 return GestureDetector(
                   onTap: () => setState(() => _selectedEkin = ekin),
@@ -95,35 +88,17 @@ class _SuwaryshPlanState extends State<SuwaryshPlan> {
                       color: isSelected ? const Color(0xFF059669) : Colors.grey[200],
                       borderRadius: BorderRadius.circular(5),
                     ),
-                    child: Text(
-                      ekin.ady,
-                      style: TextStyle(
-                        color: isSelected ? Colors.white : Colors.black,
-                      ),
-                    ),
+                    child: Text(ekin.ady, style: TextStyle(color: isSelected ? Colors.white : Colors.black)),
                   ),
                 );
               }).toList(),
             ),
             const SizedBox(height: 20),
-            TextField(
-              controller: _meydanController,
-              decoration: const InputDecoration(labelText: "Meýdan (ga)"),
-              keyboardType: TextInputType.number,
-            ),
-            TextField(
-              controller: _qController,
-              decoration: const InputDecoration(labelText: "Suw akymy (m³/s)"),
-              keyboardType: TextInputType.number,
-            ),
+            TextField(controller: _meydanController, decoration: const InputDecoration(labelText: "Meýdan (ga)"), keyboardType: TextInputType.number),
+            TextField(controller: _qController, decoration: const InputDecoration(labelText: "Suw akymy (m³/s)"), keyboardType: TextInputType.number),
             const SizedBox(height: 20),
             ElevatedButton(
               onPressed: _calculatePlan,
-              style: ElevatedButton.styleFrom(
-                backgroundColor: const Color(0xFF059669),
-                foregroundColor: Colors.white,
-                padding: const EdgeInsets.all(15),
-              ),
               child: const Text("HASAPLA"),
             ),
           ],
