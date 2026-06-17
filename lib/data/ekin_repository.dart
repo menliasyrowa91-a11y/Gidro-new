@@ -1,4 +1,5 @@
 // lib/data/ekin_repository.dart
+import '../ekin_model.dart'; // Hökman import etmeli!
 import '../gowaca.dart';
 import '../bugday.dart';
 import '../arpa.dart';
@@ -24,9 +25,9 @@ class EkinRepository {
     gowacaData,
     bugdayData,
     arpaData,
-    mekgejowenSiloslykData,
-    mekgejowenIrTomuskyData,
-    mekgejowenYazlykData,
+    mekgejowenSiloslyk, // Siziň faýlyňyzda 'mekgejowenSiloslyk' ady bilen bellenildi
+    mekgejowenIrTomusky, // Siziň faýlyňyzda 'mekgejowenIrTomusky' ady bilen bellenildi
+    mekgejowenYazlyk,   // Siziň faýlyňyzda 'mekgejowenYazlyk' ady bilen bellenildi
     pomidorData,
     hyyarData,
     soganData,
