@@ -1,6 +1,9 @@
-// lib/mekgejowen_yazlyk.dart faýlyňyzyň iň ýokarsyna şu setiri goşuň:
+// lib/mekgejowen_yazlyk.dart
+
+// 1. Ilki bilen modeli import edýäris
 import 'ekin_model.dart'; 
 
+// 2. Ekin obýektini düzýäris
 final Ekin mekgejowenYazlyk = Ekin(
   ady: "Mekgejöwen (ýazlyk)",
   tapgyrlar: [
