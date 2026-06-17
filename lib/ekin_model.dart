@@ -1,13 +1,13 @@
 class Ekin {
   final String ady;
-  final int jemiNorma; // EkinBazasyndan
-  final double jemiBaha; // EkinBazasyndan
-  final List<Tapgyr> tapgyrlar; // Tablisadan
+  final int jemiNorma; 
+  final double jemiBaha; 
+  final List<Tapgyr> tapgyrlar; 
 
   Ekin({
     required this.ady,
-    required this.jemiNorma,
-    required this.jemiBaha,
+    this.jemiNorma = 0, // Başlangyç baha goşduk
+    this.jemiBaha = 0.0, // Başlangyç baha goşduk
     required this.tapgyrlar,
   });
 }
