@@ -1,16 +1,4 @@
-class Ekin {
-  final String ady;
-  final int jemiNorma; 
-  final double jemiBaha; 
-  final List<Tapgyr> tapgyrlar; 
-
-  Ekin({
-    required this.ady,
-    this.jemiNorma = 0, // Başlangyç baha goşduk
-    this.jemiBaha = 0.0, // Başlangyç baha goşduk
-    required this.tapgyrlar,
-  });
-}
+// lib/ekin_model.dart
 
 class Tapgyr {
   final String ady;
@@ -29,5 +17,19 @@ class Tapgyr {
     required this.mohlet,
     required this.çeşme,
     required this.dowamlylykGijeGundiz,
+  });
+}
+
+class Ekin {
+  final String ady;
+  final int jemiNorma;
+  final double jemiBaha;
+  final List<Tapgyr> tapgyrlar;
+
+  Ekin({
+    required this.ady,
+    this.jemiNorma = 0,
+    this.jemiBaha = 0.0,
+    required this.tapgyrlar,
   });
 }
