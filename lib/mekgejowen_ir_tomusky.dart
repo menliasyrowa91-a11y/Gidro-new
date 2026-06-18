@@ -1,5 +1,4 @@
-// mekgejowen_ir_tomusky.dart faýlyňyzyň iň ýokarsyna şu setiri hökman goşuň:
-import 'ekin_model.dart'; 
+import 'ekin_model.dart';
 
 final Ekin mekgejowenIrTomusky = Ekin(
   ady: "Mekgejöwen (ir tomusda)",
