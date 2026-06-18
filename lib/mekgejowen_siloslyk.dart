@@ -1,5 +1,4 @@
-// lib/mekgejowen_siloslyk.dart faýlyňyzyň iň ýokarsyna şu setiri goşuň:
-import 'ekin_model.dart'; 
+import 'ekin_model.dart';
 
 final Ekin mekgejowenSiloslyk = Ekin(
   ady: "Mekgejöwen (siloslyk)",
