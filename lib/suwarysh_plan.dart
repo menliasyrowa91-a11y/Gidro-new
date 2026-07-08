@@ -1,7 +1,7 @@
 // lib/suwarysh_plan.dart
 import 'package:flutter/material.dart';
-import 'data/ekin_repository.dart'; // Repository-ni çagyryň
-import 'services/calculator_service.dart'; // Kalkulýator hyzmatyny çagyryň
+import 'data/ekin_repository.dart'; 
+import 'services/calculator_service.dart'; 
 
 class SuwaryshPlan extends StatefulWidget {
   const SuwaryshPlan({super.key});
@@ -11,7 +11,6 @@ class SuwaryshPlan extends StatefulWidget {
 }
 
 class _SuwaryshPlanState extends State<SuwaryshPlan> {
-  // Repository-den ähli ekinleri alýarys
   final List<Ekin> ekinBazasy = EkinRepository.allEkinler;
   
   late Ekin _selectedEkin;
@@ -19,7 +18,6 @@ class _SuwaryshPlanState extends State<SuwaryshPlan> {
 
   final TextEditingController _akymController = TextEditingController(text: '9.35');
   final TextEditingController _gaController = TextEditingController(text: '1');
-  final double _ptk = 0.85; // Suw ýitgisi koeffisiýenti
 
   @override
   void initState() {
@@ -33,9 +31,10 @@ class _SuwaryshPlanState extends State<SuwaryshPlan> {
     double ga = double.tryParse(_gaController.text) ?? 0;
     
     // Suwaryş hasaplamasy
+    // normaM3 eýýäm 15% ýitgi marginini öz içine alýar
     double qM3s = qLs / 1000;
-    // CalculatorService-i ulanyp, 15% ýitgini hasaba alýarys
-    double gun = (qM3s * _ptk * 86400) / _selectedTapgyr.normaM3;
+    double gun = (qM3s * 86400) / _selectedTapgyr.normaM3;
+    
     double nettoM3 = ga * _selectedTapgyr.normaM3;
     double jemiBaha = ga * _selectedTapgyr.baha;
 
@@ -45,15 +44,19 @@ class _SuwaryshPlanState extends State<SuwaryshPlan> {
         title: Text(_selectedEkin.ady),
         content: Column(
           mainAxisSize: MainAxisSize.min,
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text("Tapgyr: ${_selectedTapgyr.ady}"),
             Text("Möhleti: ${_selectedTapgyr.mohlet}"),
             Text("Dowamlylygy: ${gun.toStringAsFixed(2)} gün"),
             Divider(),
-            Text("Netto: ${nettoM3.toStringAsFixed(0)} m³"),
+            Text("Netto (15% ýitgi goşulan): ${nettoM3.toStringAsFixed(0)} m³"),
             Text("Baha: ${jemiBaha.toStringAsFixed(2)} manat"),
           ],
         ),
+        actions: [
+          TextButton(onPressed: () => Navigator.pop(ctx), child: Text("Ýap"))
+        ],
       ),
     );
   }
@@ -61,6 +64,7 @@ class _SuwaryshPlanState extends State<SuwaryshPlan> {
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
+      padding: EdgeInsets.all(16.0),
       child: Column(
         children: [
           DropdownButtonFormField<Ekin>(
