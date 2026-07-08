@@ -2,7 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'dart:math';
-import 'package:intl/intl.dart'; // Bu paket seneleri hasaplamak üçin hökmandyr
+import 'package:intl/intl.dart';
 
 class Wodosliw extends StatefulWidget {
   const Wodosliw({super.key});
@@ -12,7 +12,6 @@ class Wodosliw extends StatefulWidget {
 }
 
 class _WodosliwState extends State<Wodosliw> {
-  // Giriş üçin kontrollerler
   final TextEditingController _startController = TextEditingController(text: '2026-06-12 10:00:00');
   final TextEditingController _endController = TextEditingController(text: '2026-06-13 08:00:00');
   final TextEditingController _bController = TextEditingController(text: '0.5');
@@ -21,7 +20,6 @@ class _WodosliwState extends State<Wodosliw> {
   final TextEditingController _normaController = TextEditingController(text: '800');
   final TextEditingController _ptkController = TextEditingController(text: '0.85');
 
-  // Netijeler üçin üýtgeýänler
   Map<String, String>? _res;
 
   void _calculate() {
@@ -43,51 +41,48 @@ class _WodosliwState extends State<Wodosliw> {
       return;
     }
 
-    // 1. Seneleri parse etmek (Excel logikasy üçin wagt tapawudy)
-    DateFormat format = DateFormat("yyyy-MM-dd HH:mm:ss");
-    DateTime start = format.parse(_startController.text);
-    DateTime end = format.parse(_endController.text);
-    double hakykyWagtSagat = end.difference(start).inMinutes / 60.0;
+    try {
+      DateFormat format = DateFormat("yyyy-MM-dd HH:mm:ss");
+      DateTime start = format.parse(_startController.text);
+      DateTime end = format.parse(_endController.text);
 
-    // 2. Hasaplamalar
-    final qLSek = (1.86 * valB * pow(valH, 1.5)) * 1000;
-    final qM3Sek = qLSek / 1000;
-    
-    final jemiSuwBrutto = (valM * valNorma) / valPtk;
-    final jemiSuwNetto = (valM * valNorma);
-    
-    // Wagt hasaby (Excel formulasy boýunça)
-    final wagtSek = jemiSuwBrutto / qM3Sek;
-    final wagtSagat = wagtSek / 3600;
-    
-    // Netto wagt hasaby
-    final wagtNettoSek = jemiSuwNetto / qM3Sek;
-    final wagtNettoSagat = wagtNettoSek / 3600;
+      // GÜNI WE SAGADY DOLY HASABA ALMAK:
+      Duration diff = end.difference(start);
+      double hakykyWagtSagat = diff.inSeconds / 3600.0;
 
-    // Aratapawut hasaby
-    final aratapawut = jemiSuwBrutto - jemiSuwNetto;
+      // Hasaplamalar
+      final qLSek = (1.86 * valB * pow(valH, 1.5)) * 1000;
+      final qM3Sek = qLSek / 1000;
+      
+      final jemiSuwBrutto = (valM * valNorma) / valPtk;
+      final jemiSuwNetto = (valM * valNorma);
+      
+      final wagtSagatBrutto = jemiSuwBrutto / (qM3Sek * 3600);
+      final wagtSagatNetto = jemiSuwNetto / (qM3Sek * 3600);
 
-    setState(() {
-      _res = {
-        "start": _startController.text,
-        "end": _endController.text,
-        "hakykyWagt": hakykyWagtSagat.toStringAsFixed(2),
-        "b": valB.toStringAsFixed(1),
-        "qLSek": qLSek.toStringAsFixed(2),
-        "H": valH.toStringAsFixed(3),
-        "meydan": valM.toString(),
-        "norma": valNorma.toString(),
-        "ptk": valPtk.toString(),
-        "wagtSek": wagtSek.toStringAsFixed(2),
-        "wagtSagat": wagtSagat.toStringAsFixed(2),
-        "jemiBrutto": jemiSuwBrutto.toStringAsFixed(2),
-        "jemiNetto": jemiSuwNetto.toStringAsFixed(2),
-        "ortacaM3": jemiSuwBrutto.toStringAsFixed(2),
-        "aratapawut": aratapawut.toStringAsFixed(2),
-        "kadaBruttoWagt": wagtSagat.toStringAsFixed(2),
-        "kadaNettoWagt": wagtNettoSagat.toStringAsFixed(2),
-      };
-    });
+      final aratapawut = jemiSuwBrutto - jemiSuwNetto;
+
+      setState(() {
+        _res = {
+          "start": _startController.text,
+          "end": _endController.text,
+          "hakykyWagt": hakykyWagtSagat.toStringAsFixed(2),
+          "b": valB.toStringAsFixed(1),
+          "qLSek": qLSek.toStringAsFixed(2),
+          "H": valH.toStringAsFixed(3),
+          "meydan": valM.toString(),
+          "norma": valNorma.toString(),
+          "ptk": valPtk.toString(),
+          "kadaBruttoWagt": wagtSagatBrutto.toStringAsFixed(2),
+          "kadaNettoWagt": wagtSagatNetto.toStringAsFixed(2),
+          "jemiBrutto": jemiSuwBrutto.toStringAsFixed(2),
+          "jemiNetto": jemiSuwNetto.toStringAsFixed(2),
+          "aratapawut": aratapawut.toStringAsFixed(2),
+        };
+      });
+    } catch (e) {
+      ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("Senäniň formaty ýalňyş!")));
+    }
   }
 
   @override
@@ -98,48 +93,25 @@ class _WodosliwState extends State<Wodosliw> {
         padding: const EdgeInsets.all(20),
         child: Column(
           children: [
-            TextField(controller: _startController, decoration: InputDecoration(labelText: "Başlanýan senesi we wagty:")),
-            TextField(controller: _endController, decoration: InputDecoration(labelText: "Gutarýan senesi we wagty:")),
-            TextField(controller: _bController, decoration: InputDecoration(labelText: "Wodasliwiň ini (b), metr")),
-            TextField(controller: _hController, decoration: InputDecoration(labelText: "Bosagadan agýan suwuň beýikligi (H), metr")),
-            TextField(controller: _meydanController, decoration: InputDecoration(labelText: "Jemi suwarlan meýdan, ga")),
-            TextField(controller: _normaController, decoration: InputDecoration(labelText: "Bir gektara berilmeli suwuň möçberi (norma)")),
-            TextField(controller: _ptkController, decoration: InputDecoration(labelText: "Ýabyň peýdaly iş koeffisienti (PTK)")),
+            TextField(controller: _startController, decoration: InputDecoration(labelText: "Başlanýan (yyyy-MM-dd HH:mm:ss)")),
+            TextField(controller: _endController, decoration: InputDecoration(labelText: "Gutarýan (yyyy-MM-dd HH:mm:ss)")),
+            TextField(controller: _bController, decoration: InputDecoration(labelText: "Wodasliwiň ini (b), metr"), keyboardType: TextInputType.number),
+            TextField(controller: _hController, decoration: InputDecoration(labelText: "Suwuň beýikligi (H), metr"), keyboardType: TextInputType.number),
+            TextField(controller: _meydanController, decoration: InputDecoration(labelText: "Suwarlan meýdan, ga"), keyboardType: TextInputType.number),
+            TextField(controller: _normaController, decoration: InputDecoration(labelText: "Suw normasy"), keyboardType: TextInputType.number),
+            TextField(controller: _ptkController, decoration: InputDecoration(labelText: "PTK (0-1 aralygynda)"), keyboardType: TextInputType.number),
             const SizedBox(height: 20),
-            ElevatedButton(
-              onPressed: _calculate,
-              style: ElevatedButton.styleFrom(backgroundColor: const Color(0xFF059669), foregroundColor: Colors.white),
-              child: const Text("HASAPLA"),
-            ),
-            if (_res != null)
-              Container(
-                margin: const EdgeInsets.only(top: 20),
-                padding: const EdgeInsets.all(15),
-                decoration: BoxDecoration(color: const Color(0xFFf0fdf4), borderRadius: BorderRadius.circular(8)),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text("Başlanýan: ${_res!['start']}"),
-                    Text("Gutarýan: ${_res!['end']}"),
-                    Text("Hakyky suw tutulan wagt: ${_res!['hakykyWagt']} sagat"),
-                    Divider(),
-                    Text("Wodasliwiň ini (b): ${_res!['b']} m"),
-                    Text("Sekuntda alnan suw: ${_res!['qLSek']} l/sek"),
-                    Text("Suw beýikligi (H): ${_res!['H']} m"),
-                    Text("Jemi suwarlan meýdan: ${_res!['meydan']} ga"),
-                    Text("Suw norma: ${_res!['norma']}"),
-                    Text("PTK: ${_res!['ptk']}"),
-                    Divider(),
-                    Text("Suw tutmagyň dowamlylygy (sek): ${_res!['wagtSek']}"),
-                    Text("Kada Brutto boýunça wagt: ${_res!['kadaBruttoWagt']} sagat"),
-                    Text("Kada Netto boýunça wagt: ${_res!['kadaNettoWagt']} sagat"),
-                    Divider(),
-                    Text("Jemi suw (Brutto): ${_res!['jemiBrutto']} m³"),
-                    Text("Jemi arassa suw (Netto): ${_res!['jemiNetto']} m³"),
-                    Text("Aratapawudy: ${_res!['aratapawut']} m³"),
-                  ],
-                ),
-              ),
+            ElevatedButton(onPressed: _calculate, child: const Text("HASAPLA")),
+            if (_res != null) ...[
+              const Divider(height: 40),
+              Text("Hakyky suw tutulan wagt: ${_res!['hakykyWagt']} sagat"),
+              Text("Kada Brutto boýunça: ${_res!['kadaBruttoWagt']} sagat"),
+              Text("Kada Netto boýunça: ${_res!['kadaNettoWagt']} sagat"),
+              const Divider(),
+              Text("Jemi suw (Brutto): ${_res!['jemiBrutto']} m³"),
+              Text("Jemi arassa suw (Netto): ${_res!['jemiNetto']} m³"),
+              Text("Aratapawudy: ${_res!['aratapawut']} m³"),
+            ]
           ],
         ),
       ),
