@@ -11,7 +11,6 @@ class _TurbaGecirijiState extends State<TurbaGeciriji> {
   String _selectedDiametr = "300 mm";
   double _selectedBurc = 0.0;
 
-  // Siziň iberen tablisalaryňyzyň maglumatlary
   final Map<String, Map<double, double>> _tabloData = {
     "300 mm": {0.0: 0.0, 0.1: 0.0205, 0.2: 0.0501, 0.3: 0.0706},
     "400 mm": {0.0: 0.0, 0.1: 0.0245, 0.2: 0.0628, 0.3: 0.1011, 0.4: 0.1256},
@@ -25,7 +24,15 @@ class _TurbaGecirijiState extends State<TurbaGeciriji> {
 
   @override
   Widget build(BuildContext context) {
-    double suwMukdary = _tabloData[_selectedDiametr]![_selectedBurc] ?? 0.0;
+    // Saýlanan diametre görä mümkin bolan beýiklikleri alýarys
+    final burclar = _tabloData[_selectedDiametr]!;
+    
+    // Eger saýlanan burç bu diametrde ýok bolsa, iň birinjisini saýlaýarys (howpsuzlyk üçin)
+    if (!burclar.containsKey(_selectedBurc)) {
+      _selectedBurc = burclar.keys.first;
+    }
+
+    double suwMukdary = burclar[_selectedBurc] ?? 0.0;
 
     return SingleChildScrollView(
       padding: const EdgeInsets.all(20),
@@ -38,14 +45,14 @@ class _TurbaGecirijiState extends State<TurbaGeciriji> {
             items: _tabloData.keys.map((d) => DropdownMenuItem(value: d, child: Text(d))).toList(),
             onChanged: (v) => setState(() {
               _selectedDiametr = v!;
-              _selectedBurc = _tabloData[v]!.keys.first;
+              _selectedBurc = _tabloData[v]!.keys.first; // Diametr üýtgände burçy resetleýäris
             }),
           ),
           SizedBox(height: 20),
           DropdownButtonFormField<double>(
             decoration: InputDecoration(labelText: "Suw beýikligi", border: OutlineInputBorder()),
             value: _selectedBurc,
-            items: _tabloData[_selectedDiametr]!.keys.map((b) => DropdownMenuItem(value: b, child: Text(b.toString()))).toList(),
+            items: burclar.keys.map((b) => DropdownMenuItem(value: b, child: Text(b.toString()))).toList(),
             onChanged: (v) => setState(() => _selectedBurc = v!),
           ),
           SizedBox(height: 30),
@@ -57,7 +64,8 @@ class _TurbaGecirijiState extends State<TurbaGeciriji> {
                 children: [
                   Text("Turbadan geçýän suw:", style: TextStyle(fontSize: 16)),
                   SizedBox(height: 10),
-                  Text("${suwMukdary.toStringAsFixed(4)} m³/sek", style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold, color: Colors.blue.shade900)),
+                  Text("${suwMukdary.toStringAsFixed(4)} m³/sek", 
+                      style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold, color: Colors.blue.shade900)),
                 ],
               ),
             ),
