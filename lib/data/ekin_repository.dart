@@ -1,10 +1,10 @@
 // lib/data/ekin_repository.dart
-import '../ekin_model.dart'; // Hökman import etmeli!
+import '../ekin_model.dart'; 
 import '../gowaca.dart';
 import '../bugday.dart';
 import '../arpa.dart';
 import '../mekgejowen_siloslyk.dart';
-import '../mekgejowen_ir_tomusky.dart';
+import '../mekgejowen_tomusky.dart';
 import '../mekgejowen_yazlyk.dart';
 import '../pomidor.dart';
 import '../hyyar.dart';
@@ -22,24 +22,24 @@ import '../yorunja_yazlyk.dart';
 
 class EkinRepository {
   static List<Ekin> get allEkinler => [
-    gowacaData,
-    bugdayData,
-    arpaData,
-    mekgejowenSiloslyk, // Siziň faýlyňyzda 'mekgejowenSiloslyk' ady bilen bellenildi
-    mekgejowenIrTomusky, // Siziň faýlyňyzda 'mekgejowenIrTomusky' ady bilen bellenildi
-    mekgejowenYazlyk,   // Siziň faýlyňyzda 'mekgejowenYazlyk' ady bilen bellenildi
-    pomidorData,
-    hyyarData,
-    soganData,
-    kelemData,
-    kashirData,
-    sarymsakData,
-    bakjaData,
-    miweliBaglarData,
-    uzumData,
-    yeralmaKartoşkaData,
-    aralykEkinlerData,
-    yorunjaKopyyllykData,
-    yorunjaYazlykData,
-  ];
+        gowacaYazlyk,      // Faýlyňyzda näme ady bolsa şony ýazyň
+        bugdayData,        // Meselem: bugday.dart-daky ady
+        arpaData,          
+        mekgejowenSiloslykData, 
+        mekgejowenTomuskyData,
+        mekgejowenYazlykData,
+        pomidorData,
+        hyyarData,
+        soganData,
+        kelemData,
+        kashirData,
+        sarymsakData,
+        bakjaData,
+        miweliBaglarData,
+        uzumData,
+        yeralmaData,
+        aralykEkinlerData,
+        yorunjaKopyyllykData,
+        yorunjaYazlykData,
+      ];
 }
