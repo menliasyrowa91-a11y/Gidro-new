@@ -43,7 +43,6 @@ class _DeryaGiwrawlikaState extends State<DeryaGiwrawlika> {
       return;
     }
 
-    // FORMULA LOGIKASY (kiçi harplar bilen düzedildi)
     final f = ((bU + bA) / 2) * h;
     const k = 0.82;
     final v = (l / t) * k;
@@ -64,12 +63,12 @@ class _DeryaGiwrawlikaState extends State<DeryaGiwrawlika> {
           padding: const EdgeInsets.all(20),
           child: Column(
             children: [
-              const Text("Derýa Gidrawlika Hasaby", style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
+              const Text("Derya Gidrawlika Hasaby", style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
               const SizedBox(height: 15),
               
-              TextField(controller: _bUstiController, decoration: const InputDecoration(labelText: "Suw üsti ini (b_usti)"), keyboardType: const TextInputType.numberWithOptions(decimal: true)),
+              TextField(controller: _bUstiController, decoration: const InputDecoration(labelText: "Suw usti ini (b_usti)"), keyboardType: const TextInputType.numberWithOptions(decimal: true)),
               TextField(controller: _bAstyController, decoration: const InputDecoration(labelText: "Suw asty ini (b_asty)"), keyboardType: const TextInputType.numberWithOptions(decimal: true)),
-              TextField(controller: _hController, decoration: const InputDecoration(labelText: "Çuňluk (h)"), keyboardType: const TextInputType.numberWithOptions(decimal: true)),
+              TextField(controller: _hController, decoration: const InputDecoration(labelText: "Cunluk (h)"), keyboardType: const TextInputType.numberWithOptions(decimal: true)),
               TextField(controller: _lController, decoration: const InputDecoration(labelText: "Aralyk (L)"), keyboardType: const TextInputType.numberWithOptions(decimal: true)),
               TextField(controller: _tController, decoration: const InputDecoration(labelText: "Wagt (t)"), keyboardType: const TextInputType.numberWithOptions(decimal: true)),
               
@@ -89,9 +88,9 @@ class _DeryaGiwrawlikaState extends State<DeryaGiwrawlika> {
                     children: [
                       const Text("Netijeler:", style: TextStyle(fontWeight: FontWeight.bold)),
                       const Divider(),
-                      Text("Meýdan (F): $_fResult m²"),
+                      Text("Meydan (F): $_fResult m2"),
                       Text("Tizlik (V): $_vResult m/s"),
-                      Text("Suw sarpyny (Q): $_qResult m³/s", style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: Color(0xFF065f46))),
+                      Text("Suw sarpyny (Q): $_qResult m3/s", style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: Color(0xFF065f46))),
                     ],
                   ),
                 ),
