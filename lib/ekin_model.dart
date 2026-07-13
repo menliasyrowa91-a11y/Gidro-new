@@ -1,5 +1,3 @@
-// lib/ekin_model.dart
-
 class Tapgyr {
   final String ady;
   final int normaM3;
@@ -22,14 +20,16 @@ class Tapgyr {
 
 class Ekin {
   final String ady;
-  final int jemiNorma;
-  final double jemiBaha;
   final List<Tapgyr> tapgyrlar;
 
-  Ekin({
-    required this.ady,
-    this.jemiNorma = 0,
-    this.jemiBaha = 0.0,
-    required this.tapgyrlar,
-  });
+  int get jemiNorma => tapgyrlar.fold(0, (sum, item) => sum + item.normaM3);
+  double get jemiBaha => tapgyrlar.fold(0.0, (sum, item) => sum + item.baha);
+
+  Ekin({required this.ady, required this.tapgyrlar});
+
+  @override
+  bool operator ==(Object other) => other is Ekin && other.ady == ady;
+  
+  @override
+  int get hashCode => ady.hashCode; 
 }

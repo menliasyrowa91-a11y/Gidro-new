@@ -1,6 +1,6 @@
 // lib/data/ekin_repository.dart
 import '../ekin_model.dart'; 
-import '../gowaca.dart';
+import '../gowaca_data.dart'; // Gowaça faýlyňyzyň adyny şeýle diýip üýtgediň
 import '../bugday.dart';
 import '../arpa.dart';
 import '../mekgejowen_siloslyk.dart';
@@ -22,8 +22,9 @@ import '../yorunja_yazlyk.dart';
 
 class EkinRepository {
   static List<Ekin> get allEkinler => [
-        gowacaYazlyk,      // Faýlyňyzda näme ady bolsa şony ýazyň
-        bugdayData,        // Meselem: bugday.dart-daky ady
+        gowacaRegion1,        // Gowaça 1
+        gowacaRegion2,        // Gowaça 2
+        bugdayData,           
         arpaData,          
         mekgejowenSiloslykData, 
         mekgejowenTomuskyData,
