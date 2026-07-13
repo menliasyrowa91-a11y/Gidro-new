@@ -4,8 +4,8 @@ class Tapgyr {
   final double gidroModul;
   final double baha;
   final String mohlet;
-  final String çeşme;
-  final int dowamlylykGijeGundiz;
+  final String cesme; // "çeşme" harpy aýryldy
+  final int dowamlylyk; // "dowamlylykGijeGundiz" gysgaldyldy
 
   Tapgyr({
     required this.ady,
@@ -13,8 +13,8 @@ class Tapgyr {
     required this.gidroModul,
     required this.baha,
     required this.mohlet,
-    required this.çeşme,
-    required this.dowamlylykGijeGundiz,
+    required this.cesme,
+    required this.dowamlylyk,
   });
 }
 
