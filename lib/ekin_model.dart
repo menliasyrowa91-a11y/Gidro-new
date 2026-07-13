@@ -22,14 +22,14 @@ class Tapgyr {
 
 class Ekin {
   final String ady;
-  final int jemiNorma;
-  final double jemiBaha;
   final List<Tapgyr> tapgyrlar;
+
+  // Jemi norma we baha awtomatiki hasaplanýar
+  int get jemiNorma => tapgyrlar.fold(0, (sum, item) => sum + item.normaM3);
+  double get jemiBaha => tapgyrlar.fold(0.0, (sum, item) => sum + item.baha);
 
   Ekin({
     required this.ady,
-    this.jemiNorma = 0,
-    this.jemiBaha = 0.0,
     required this.tapgyrlar,
   });
 }
