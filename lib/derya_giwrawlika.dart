@@ -29,7 +29,8 @@ class _DeryaGiwrawlikaState extends State<DeryaGiwrawlika> {
     super.dispose();
   }
 
-  void _calculate() {
+  // Bu ýerde BuildContext-i parametr hökmünde berýäris
+  void _calculate(BuildContext context) {
     final bU = double.tryParse(_bUstiController.text);
     final bA = double.tryParse(_bAstyController.text);
     final h = double.tryParse(_hController.text);
@@ -74,7 +75,7 @@ class _DeryaGiwrawlikaState extends State<DeryaGiwrawlika> {
               
               const SizedBox(height: 20),
               ElevatedButton(
-                onPressed: _calculate,
+                onPressed: () => _calculate(context), // context-i bu ýerden iberýäris
                 style: ElevatedButton.styleFrom(backgroundColor: const Color(0xFF059669), foregroundColor: Colors.white),
                 child: const Text("HASAPLA"),
               ),
