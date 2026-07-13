@@ -27,9 +27,9 @@ class Ekin {
 
   Ekin({required this.ady, required this.tapgyrlar});
 
-  // DropdownButton üçin hökman gerek
   @override
   bool operator ==(Object other) => other is Ekin && other.ady == ady;
+  
   @override
-  int get hashCode => ady.hashCode;
+  int get hashCode => ady.hashCode; 
 }
