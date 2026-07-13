@@ -1,6 +1,6 @@
 // lib/suwarysh_plan.dart
 import 'package:flutter/material.dart';
-import 'ekin_model.dart'; // Ekin we Tapgyr klasslaryny çagyrmak üçin
+import 'ekin_model.dart'; 
 import 'data/ekin_repository.dart'; 
 
 class SuwaryshPlan extends StatefulWidget {
@@ -11,11 +11,10 @@ class SuwaryshPlan extends StatefulWidget {
 }
 
 class _SuwaryshPlanState extends State<SuwaryshPlan> {
-  // Repository-den ekinleriň sanawyny alýarys
   final List<Ekin> ekinBazasy = EkinRepository.allEkinler;
   
-  late Ekin _selectedEkin;
-  late Tapgyr _selectedTapgyr;
+  Ekin? _selectedEkin;
+  Tapgyr? _selectedTapgyr;
 
   final TextEditingController _akymController = TextEditingController(text: '9.35');
   final TextEditingController _gaController = TextEditingController(text: '1');
@@ -23,35 +22,37 @@ class _SuwaryshPlanState extends State<SuwaryshPlan> {
   @override
   void initState() {
     super.initState();
-    // Ilkinji ekini we onuň ilkinji tapgyryny saýlaýarys
-    _selectedEkin = ekinBazasy[0];
-    _selectedTapgyr = _selectedEkin.tapgyrlar[0];
+    if (ekinBazasy.isNotEmpty) {
+      _selectedEkin = ekinBazasy[0];
+      _selectedTapgyr = _selectedEkin!.tapgyrlar[0];
+    }
   }
 
   void _hesapla() {
+    if (_selectedTapgyr == null || _selectedEkin == null) return;
+
     double qLs = double.tryParse(_akymController.text) ?? 0;
     double ga = double.tryParse(_gaController.text) ?? 0;
     
-    // Suwaryş hasaplamasy
     double qM3s = qLs / 1000;
-    double gun = (qM3s * 86400) / _selectedTapgyr.normaM3;
+    double gun = (qM3s * 86400) / _selectedTapgyr!.normaM3;
     
-    double nettoM3 = ga * _selectedTapgyr.normaM3;
-    double jemiBaha = ga * _selectedTapgyr.baha;
+    double nettoM3 = ga * _selectedTapgyr!.normaM3;
+    double jemiBaha = ga * _selectedTapgyr!.baha;
 
     showDialog(
       context: context,
       builder: (ctx) => AlertDialog(
-        title: Text(_selectedEkin.ady),
+        title: Text(_selectedEkin!.ady),
         content: Column(
           mainAxisSize: MainAxisSize.min,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text("Tapgyr: ${_selectedTapgyr.ady}"),
-            Text("Möhleti: ${_selectedTapgyr.mohlet}"),
+            Text("Tapgyr: ${_selectedTapgyr!.ady}"),
+            Text("Möhleti: ${_selectedTapgyr!.mohlet}"),
             Text("Dowamlylygy: ${gun.toStringAsFixed(2)} gün"),
             const Divider(),
-            Text("Netto (15% ýitgi goşulan): ${nettoM3.toStringAsFixed(0)} m³"),
+            Text("Netto: ${nettoM3.toStringAsFixed(0)} m³"),
             Text("Baha: ${jemiBaha.toStringAsFixed(2)} manat"),
           ],
         ),
@@ -64,25 +65,25 @@ class _SuwaryshPlanState extends State<SuwaryshPlan> {
 
   @override
   Widget build(BuildContext context) {
+    if (_selectedEkin == null) return const Center(child: CircularProgressIndicator());
+
     return SingleChildScrollView(
       padding: const EdgeInsets.all(16.0),
       child: Column(
         children: [
-          // Ekin saýlamak üçin Dropdown
           DropdownButtonFormField<Ekin>(
             value: _selectedEkin,
             items: ekinBazasy.map((e) => DropdownMenuItem(value: e, child: Text(e.ady))).toList(),
             onChanged: (v) => setState(() {
-              _selectedEkin = v!;
-              _selectedTapgyr = v.tapgyrlar[0]; // Ekin üýtgende tapgyry hem täzele
+              _selectedEkin = v;
+              _selectedTapgyr = v?.tapgyrlar.isNotEmpty == true ? v!.tapgyrlar[0] : null;
             }),
             decoration: const InputDecoration(labelText: "Ekini saýlaň"),
           ),
-          // Tapgyr saýlamak üçin Dropdown
           DropdownButtonFormField<Tapgyr>(
             value: _selectedTapgyr,
-            items: _selectedEkin.tapgyrlar.map((t) => DropdownMenuItem(value: t, child: Text(t.ady))).toList(),
-            onChanged: (v) => setState(() => _selectedTapgyr = v!),
+            items: _selectedEkin!.tapgyrlar.map((t) => DropdownMenuItem(value: t, child: Text(t.ady))).toList(),
+            onChanged: (v) => setState(() => _selectedTapgyr = v),
             decoration: const InputDecoration(labelText: "Tapgyry saýlaň"),
           ),
           TextField(controller: _akymController, decoration: const InputDecoration(labelText: "Akym (l/sek)")),
