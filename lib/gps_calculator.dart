@@ -1,4 +1,4 @@
-// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
+// ignore_for_file: illegal_character, prefer_const_constructors, prefer_const_literals_to_create_immutables
 
 import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';
@@ -14,7 +14,7 @@ class GpsCalculator extends StatefulWidget {
 class _GpsCalculatorState extends State<GpsCalculator> {
   List<Position> points = [];
 
-  // Nokat goşmak logikasy (Siziň öňki logikanyňyz, diňe tertiplendi)
+  // Nokat goşmak logikasy
   Future<void> addPoint() async {
     bool serviceEnabled = await Geolocator.isLocationServiceEnabled();
     if (!serviceEnabled) {
@@ -62,7 +62,7 @@ class _GpsCalculatorState extends State<GpsCalculator> {
     showDialog(
       context: context,
       builder: (ctx) => AlertDialog(
-        title: Text("Ölçeýşiň Netijesi"),
+        title: Text("Ölçeýşiň netijesi"),
         content: Text("Meýdan:\n\n${(area / 10000).toStringAsFixed(4)} gektar\n${(area / 100).toStringAsFixed(2)} sotuk\n(${area.toStringAsFixed(0)} m²)"),
         actions: [TextButton(onPressed: () => Navigator.pop(ctx), child: Text("OK"))],
       ),
@@ -72,15 +72,24 @@ class _GpsCalculatorState extends State<GpsCalculator> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(title: Text("GPS Meýdan Hasaplaýjy")),
       body: Padding(
         padding: const EdgeInsets.all(20),
         child: Column(
           children: [
-            ElevatedButton(onPressed: addPoint, child: Text("Nokat Goş")),
+            ElevatedButton(onPressed: addPoint, child: Text("Nokat goş")),
             SizedBox(height: 10),
-            ElevatedButton(onPressed: calculatePreciseArea, style: ElevatedButton.styleFrom(backgroundColor: Colors.green, foregroundColor: Colors.white), child: Text("Takyk Hasapla")),
+            ElevatedButton(
+              onPressed: calculatePreciseArea, 
+              style: ElevatedButton.styleFrom(backgroundColor: Colors.green, foregroundColor: Colors.white), 
+              child: Text("Takyk hasapla")
+            ),
             SizedBox(height: 10),
-            ElevatedButton(onPressed: () => setState(() => points.clear()), style: ElevatedButton.styleFrom(backgroundColor: Colors.red, foregroundColor: Colors.white), child: Text("Arassala")),
+            ElevatedButton(
+              onPressed: () => setState(() => points.clear()), 
+              style: ElevatedButton.styleFrom(backgroundColor: Colors.red, foregroundColor: Colors.white), 
+              child: Text("Arassala")
+            ),
             SizedBox(height: 20),
             Expanded(
               child: ListView.builder(
