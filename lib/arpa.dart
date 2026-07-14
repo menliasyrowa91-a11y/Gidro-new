@@ -1,4 +1,5 @@
 // ignore_for_file: illegal_character
+// lib/arpa.dart
 import 'ekin_model.dart';
 
 final Ekin arpaData = Ekin(
