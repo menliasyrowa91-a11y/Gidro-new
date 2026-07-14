@@ -3,13 +3,12 @@
 import 'package:flutter/material.dart';
 
 // Esasy modul we hyzmatlaryň import edilmegi
-import 'derya_giwrawlika.dart';
+import 'derya_gidrawlika.dart';
 import 'ekin_bazasy.dart';
 import 'gps_calculator.dart';
 import 'suwarysh_plan.dart';
 import 'wodosliw.dart';
 import 'turba_geciriji.dart';
-import 'data/ekin_repository.dart'; // Repository-ni baglamak üçin
 
 void main() {
   runApp(const GidroKalkulyatorApp());
@@ -43,7 +42,7 @@ class _AppState extends State<App> {
     'GPS': Icons.location_on,
     'Derýa': Icons.water,
     'Suwarysh': Icons.agriculture,
-    'Wodosliw': Icons.drain,
+    'Wodosliw': Icons.water_drop,
     'Ekin': Icons.grass,
     'Turba': Icons.settings_input_composite,
   };
@@ -51,10 +50,10 @@ class _AppState extends State<App> {
   Widget _renderContent() {
     switch (activeTab) {
       case 'GPS': return GpsCalculator();
-      case 'Derýa': return DeryaGiwrawlika();
+      case 'Derýa': return Deryagidrawlika();
       case 'Suwarysh': return SuwaryshPlan();
       case 'Wodosliw': return Wodosliw();
-      case 'Ekin': return EkinBazasy(); // EkinRepository şu ýerde ulanylýar
+      case 'Ekin': return EkinBazasy();
       case 'Turba': return TurbaGeciriji();
       default: return GpsCalculator();
     }
@@ -130,7 +129,7 @@ class _AppState extends State<App> {
           color: isActive ? Colors.blue[800] : Colors.white,
           border: Border.all(color: Colors.blue[800]!),
           borderRadius: BorderRadius.circular(15),
-          boxShadow: isActive ? [BoxShadow(color: Colors.blue.withOpacity(0.3), blurRadius: 8, offset: Offset(0, 4))] : [],
+          boxShadow: isActive ? [BoxShadow(color: Colors.blue.withValues(alpha: 0.3), blurRadius: 8, offset: Offset(0, 4))] : [],
         ),
         child: Row(
           mainAxisSize: MainAxisSize.min,
