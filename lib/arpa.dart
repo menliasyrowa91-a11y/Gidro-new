@@ -10,8 +10,8 @@ final Ekin arpaData = Ekin(
       gidroModul: 0.668, 
       baha: 0.0298, 
       mohlet: "05.IX-30.IX", 
-      cesme: "12.02.2024 tassyknamasy", // 'çeşme' -> 'cesme'
-      dowamlylyk: 26,                  // 'dowamlylykGijeGundiz' -> 'dowamlylyk'
+      çeşme: "12.02.2024 tassyknamasy", 
+      dowamlylykGijeGundiz: 26,
     ),
     Tapgyr(
       ady: "1-nji ösüş", 
@@ -19,8 +19,8 @@ final Ekin arpaData = Ekin(
       gidroModul: 0.274, 
       baha: 0.0298, 
       mohlet: "01.X-25.XII", 
-      cesme: "12.02.2024 tassyknamasy",
-      dowamlylyk: 55,
+      çeşme: "12.02.2024 tassyknamasy", 
+      dowamlylykGijeGundiz: 55,
     ),
     Tapgyr(
       ady: "2-nji ösüş", 
@@ -28,8 +28,8 @@ final Ekin arpaData = Ekin(
       gidroModul: 0.367, 
       baha: 0.0298, 
       mohlet: "16.II-28.III", 
-      cesme: "12.02.2024 tassyknamasy",
-      dowamlylyk: 41,
+      çeşme: "12.02.2024 tassyknamasy", 
+      dowamlylykGijeGundiz: 41,
     ),
     Tapgyr(
       ady: "3-nji ösüş", 
@@ -37,8 +37,8 @@ final Ekin arpaData = Ekin(
       gidroModul: 0.316, 
       baha: 0.0298, 
       mohlet: "29.III-11.V", 
-      cesme: "12.02.2024 tassyknamasy",
-      dowamlylyk: 44,
+      çeşme: "12.02.2024 tassyknamasy", 
+      dowamlylykGijeGundiz: 44,
     ),
   ],
 );
