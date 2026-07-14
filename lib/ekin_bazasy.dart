@@ -1,4 +1,4 @@
-// lib/ekin_bazasy.dart
+// ignore_for_file: illegal_character
 import 'package:flutter/material.dart';
 
 class Ekin {
