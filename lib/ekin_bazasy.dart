@@ -1,4 +1,5 @@
 // ignore_for_file: illegal_character
+// lib/ekin_bazasy.dart
 import 'package:flutter/material.dart';
 
 class Ekin {
@@ -62,7 +63,7 @@ class _EkinBazasyState extends State<EkinBazasy> {
           children: [
             DropdownButtonFormField<Ekin>(
               decoration: const InputDecoration(labelText: "Ekini saýlaň", border: OutlineInputBorder()),
-              initialValue: _selectedEkin,
+              value: _selectedEkin,
               isExpanded: true,
               onChanged: (Ekin? newValue) => setState(() => _selectedEkin = newValue),
               items: ekinler.map((e) => DropdownMenuItem(value: e, child: Text(e.ady))).toList(),
@@ -70,7 +71,7 @@ class _EkinBazasyState extends State<EkinBazasy> {
             const SizedBox(height: 15),
             DropdownButtonFormField<double>(
               decoration: const InputDecoration(labelText: "Ýabyň PTK-syny saýlaň", border: OutlineInputBorder()),
-              initialValue: _selectedPtk,
+              value: _selectedPtk,
               isExpanded: true,
               onChanged: (double? newValue) => setState(() => _selectedPtk = newValue),
               items: ptkList.map((val) => DropdownMenuItem(value: val, child: Text(val.toString()))).toList(),
