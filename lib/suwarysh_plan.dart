@@ -1,3 +1,4 @@
+// ignore_for_file: illegal_character
 // lib/suwarysh_plan.dart
 import 'package:flutter/material.dart';
 import 'ekin_model.dart'; 
