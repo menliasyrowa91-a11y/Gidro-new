@@ -1,11 +1,13 @@
+// ignore_for_file: illegal_character
+
 class Tapgyr {
   final String ady;
   final int normaM3;
   final double gidroModul;
   final double baha;
   final String mohlet;
-  final String çeşme; // Türkmençe at
-  final int dowamlylykGijeGundiz; // Türkmençe at
+  final String çeşme; 
+  final int dowamlylykGijeGundiz; 
 
   Tapgyr({
     required this.ady,
