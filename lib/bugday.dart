@@ -11,7 +11,7 @@ final Ekin bugdayData = Ekin(
       gidroModul: 0.668,
       baha: 0.0298,
       mohlet: "05.IX-30.IX",
-      çeşme: "12.02.2024 tassyknamasy",
+      cesme: "12.02.2024 tassyknamasy",
       dowamlylykGijeGundiz: 26,
     ),
     Tapgyr(
@@ -20,7 +20,7 @@ final Ekin bugdayData = Ekin(
       gidroModul: 0.274,
       baha: 0.0298,
       mohlet: "01.X-25.XII",
-      çeşme: "12.02.2024 tassyknamasy",
+      cesme: "12.02.2024 tassyknamasy",
       dowamlylykGijeGundiz: 55,
     ),
     Tapgyr(
@@ -29,7 +29,7 @@ final Ekin bugdayData = Ekin(
       gidroModul: 0.367,
       baha: 0.0298,
       mohlet: "16.II-28.III",
-      çeşme: "12.02.2024 tassyknamasy",
+      cesme: "12.02.2024 tassyknamasy",
       dowamlylykGijeGundiz: 41,
     ),
     Tapgyr(
@@ -38,7 +38,7 @@ final Ekin bugdayData = Ekin(
       gidroModul: 0.316,
       baha: 0.0298,
       mohlet: "29.III-11.V",
-      çeşme: "12.02.2024 tassyknamasy",
+      cesme: "12.02.2024 tassyknamasy",
       dowamlylykGijeGundiz: 44,
     ),
   ],
