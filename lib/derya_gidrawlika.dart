@@ -1,11 +1,12 @@
 // ignore_for_file: illegal_character
+// lib/derya_gidrawlika.dart
 import 'package:flutter/material.dart';
 
-class DeryaGiwrawlika extends StatefulWidget {
-  const DeryaGiwrawlika({super.key});
+class DeryaGidrawlika extends StatefulWidget {
+  const DeryaGidrawlika({super.key});
 
   @override
-  State<DeryaGiwrawlika> createState() => _DeryaGiwrawlikaState();
+  State<DeryaGidrawlika> createState() => _DeryaGiwrawlikaState();
 }
 
 class _DeryaGiwrawlikaState extends State<DeryaGiwrawlika> {
