@@ -1,3 +1,4 @@
+// ignore_for_file: illegal_character
 // lib/mekgejowen_siloslyk.dart
 import 'ekin_model.dart';
 
