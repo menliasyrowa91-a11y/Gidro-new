@@ -1,11 +1,14 @@
-// ignore_for_file: illegal_character
-//lib/turba_geciriji.dart
+// ignore_for_file: illegal_character, prefer_const_constructors, prefer_const_literals_to_create_immutables
+
 import 'package:flutter/material.dart';
+
 class TurbaGeciriji extends StatefulWidget {
   const TurbaGeciriji({super.key});
- @override
+
+  @override
   State<TurbaGeciriji> createState() => _TurbaGecirijiState();
 }
+
 class _TurbaGecirijiState extends State<TurbaGeciriji> {
   String _selectedDiametr = "300 mm";
   double _selectedBurc = 0.0;
@@ -23,10 +26,9 @@ class _TurbaGecirijiState extends State<TurbaGeciriji> {
 
   @override
   Widget build(BuildContext context) {
-    // Saýlanan diametre görä mümkin bolan beýiklikleri alýarys
     final burclar = _tabloData[_selectedDiametr]!;
     
-    // Eger saýlanan burç bu diametrde ýok bolsa, iň birinjisini saýlaýarys (howpsuzlyk üçin)
+    // Howpsuzlyk üçin barlag
     if (!burclar.containsKey(_selectedBurc)) {
       _selectedBurc = burclar.keys.first;
     }
@@ -40,17 +42,17 @@ class _TurbaGecirijiState extends State<TurbaGeciriji> {
         children: [
           DropdownButtonFormField<String>(
             decoration: InputDecoration(labelText: "Turbanyň diametri", border: OutlineInputBorder()),
-            value: _selectedDiametr,
+            initialValue: _selectedDiametr,
             items: _tabloData.keys.map((d) => DropdownMenuItem(value: d, child: Text(d))).toList(),
             onChanged: (v) => setState(() {
               _selectedDiametr = v!;
-              _selectedBurc = _tabloData[v]!.keys.first; // Diametr üýtgände burçy resetleýäris
+              _selectedBurc = _tabloData[v]!.keys.first;
             }),
           ),
           SizedBox(height: 20),
           DropdownButtonFormField<double>(
             decoration: InputDecoration(labelText: "Suw beýikligi", border: OutlineInputBorder()),
-            value: _selectedBurc,
+            initialValue: _selectedBurc,
             items: burclar.keys.map((b) => DropdownMenuItem(value: b, child: Text(b.toString()))).toList(),
             onChanged: (v) => setState(() => _selectedBurc = v!),
           ),
