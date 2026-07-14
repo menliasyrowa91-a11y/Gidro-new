@@ -2,14 +2,14 @@
 // lib/derya_gidrawlika.dart
 import 'package:flutter/material.dart';
 
-class DeryaGidrawlika extends StatefulWidget {
-  const DeryaGidrawlika({super.key});
+class Deryagidrawlika extends StatefulWidget {
+  const Deryagidrawlika({super.key});
 
   @override
-  State<DeryaGidrawlika> createState() => _DeryaGiwrawlikaState();
+  State<Deryagidrawlika> createState() => _DeryagiwrawlikaState();
 }
 
-class _DeryaGiwrawlikaState extends State<DeryaGiwrawlika> {
+class _DeryagidrawlikaState extends State<Deryagidrawlika> {
   final TextEditingController _bUstiController = TextEditingController(text: '5.0');
   final TextEditingController _bAstyController = TextEditingController(text: '3.5');
   final TextEditingController _hController = TextEditingController(text: '1.2');
