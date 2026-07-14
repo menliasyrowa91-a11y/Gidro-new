@@ -1,5 +1,5 @@
 // ignore_for_file: illegal_character
-
+// lib/ekin_model.dart
 class Tapgyr {
   final String ady;
   final int normaM3;
