@@ -1,4 +1,5 @@
 // ignore_for_file: illegal_character
+// lib/deryagidrawlika.dart
 import 'package:flutter/material.dart';
 
 class Deryagidrawlika extends StatefulWidget {
@@ -66,11 +67,15 @@ class _DeryagidrawlikaState extends State<Deryagidrawlika> {
               const Text("Derýa Gidrawlika Hasaby", style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
               const SizedBox(height: 15),
               
-              TextField(controller: _bUstiController, decoration: const InputDecoration(labelText: "Suw üstüniň ini (b_üsti)"), keyboardType: const TextInputType.numberWithOptions(decimal: true)),
-              TextField(controller: _bAstyController, decoration: const InputDecoration(labelText: "Suw astynyň ini (b_asty)"), keyboardType: const TextInputType.numberWithOptions(decimal: true)),
-              TextField(controller: _hController, decoration: const InputDecoration(labelText: "Çuňluk (h)"), keyboardType: const TextInputType.numberWithOptions(decimal: true)),
-              TextField(controller: _lController, decoration: const InputDecoration(labelText: "Aralyk (L)"), keyboardType: const TextInputType.numberWithOptions(decimal: true)),
-              TextField(controller: _tController, decoration: const InputDecoration(labelText: "Wagt (t)"), keyboardType: const TextInputType.numberWithOptions(decimal: true)),
+              TextField(controller: _bUstiController, decoration: const InputDecoration(labelText: "Suw üstüniň ini (b_üsti)", border: OutlineInputBorder()), keyboardType: const TextInputType.numberWithOptions(decimal: true)),
+              const SizedBox(height: 10),
+              TextField(controller: _bAstyController, decoration: const InputDecoration(labelText: "Suw astynyň ini (b_asty)", border: OutlineInputBorder()), keyboardType: const TextInputType.numberWithOptions(decimal: true)),
+              const SizedBox(height: 10),
+              TextField(controller: _hController, decoration: const InputDecoration(labelText: "Çuňluk (h)", border: OutlineInputBorder()), keyboardType: const TextInputType.numberWithOptions(decimal: true)),
+              const SizedBox(height: 10),
+              TextField(controller: _lController, decoration: const InputDecoration(labelText: "Aralyk (L)", border: OutlineInputBorder()), keyboardType: const TextInputType.numberWithOptions(decimal: true)),
+              const SizedBox(height: 10),
+              TextField(controller: _tController, decoration: const InputDecoration(labelText: "Wagt (t)", border: OutlineInputBorder()), keyboardType: const TextInputType.numberWithOptions(decimal: true)),
               
               const SizedBox(height: 20),
               ElevatedButton(
