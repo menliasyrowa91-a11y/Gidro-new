@@ -1,4 +1,4 @@
-// lib/aralyk_ekinler.dart
+// ignore_for_file: illegal_character
 import 'ekin_model.dart';
 
 final Ekin aralykEkinlerData = Ekin(
@@ -11,7 +11,7 @@ final Ekin aralykEkinlerData = Ekin(
       baha: 53.64, 
       mohlet: "10.VII-29.VII", 
       çeşme: "AnyScanner_06_16_2026-02.jpg", 
-      dowamlylykGijeGundiz: 20
+      dowamlylykGijeGundiz: 20,
     ),
     Tapgyr(
       ady: "1-nji ösüş", 
@@ -20,7 +20,7 @@ final Ekin aralykEkinlerData = Ekin(
       baha: 26.82, 
       mohlet: "12.VIII-25.VIII", 
       çeşme: "AnyScanner_06_16_2026-02.jpg", 
-      dowamlylykGijeGundiz: 14
+      dowamlylykGijeGundiz: 14,
     ),
     Tapgyr(
       ady: "2-nji ösüş", 
@@ -29,7 +29,7 @@ final Ekin aralykEkinlerData = Ekin(
       baha: 26.82, 
       mohlet: "10.IX-23.IX", 
       çeşme: "AnyScanner_06_16_2026-02.jpg", 
-      dowamlylykGijeGundiz: 14
+      dowamlylykGijeGundiz: 14,
     ),
     Tapgyr(
       ady: "3-nji ösüş", 
@@ -38,7 +38,7 @@ final Ekin aralykEkinlerData = Ekin(
       baha: 26.82, 
       mohlet: "2.X-15.X", 
       çeşme: "AnyScanner_06_16_2026-02.jpg", 
-      dowamlylykGijeGundiz: 14
+      dowamlylykGijeGundiz: 14,
     ),
   ],
 );
