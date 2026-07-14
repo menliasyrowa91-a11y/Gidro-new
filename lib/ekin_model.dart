@@ -1,12 +1,11 @@
 // ignore_for_file: illegal_character
-// lib/ekin_model.dart
 class Tapgyr {
   final String ady;
   final int normaM3;
   final double gidroModul;
   final double baha;
   final String mohlet;
-  final String çeşme; 
+  final String cesme; // "çeşme" ýerine "cesme"
   final int dowamlylykGijeGundiz; 
 
   Tapgyr({
@@ -15,7 +14,7 @@ class Tapgyr {
     required this.gidroModul,
     required this.baha,
     required this.mohlet,
-    required this.çeşme,
+    required this.cesme, // "çeşme" ýerine "cesme"
     required this.dowamlylykGijeGundiz,
   });
 }
