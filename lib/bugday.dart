@@ -1,4 +1,5 @@
 // ignore_for_file: illegal_character
+// lib/bugday.dart
 import 'ekin_model.dart';
 
 final Ekin bugdayData = Ekin(
