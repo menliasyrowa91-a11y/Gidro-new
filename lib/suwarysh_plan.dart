@@ -1,5 +1,5 @@
-// ignore_for_file: illegal_character
-// lib/suwarysh_plan.dart
+// ignore_for_file: illegal_character, prefer_const_constructors, prefer_const_literals_to_create_immutables
+//lib/suwarysh_plan.dart
 import 'package:flutter/material.dart';
 import 'ekin_model.dart'; 
 import 'data/ekin_repository.dart'; 
@@ -73,7 +73,7 @@ class _SuwaryshPlanState extends State<SuwaryshPlan> {
       child: Column(
         children: [
           DropdownButtonFormField<Ekin>(
-            value: _selectedEkin,
+            initialValue: _selectedEkin,
             items: ekinBazasy.map((e) => DropdownMenuItem(value: e, child: Text(e.ady))).toList(),
             onChanged: (v) => setState(() {
               _selectedEkin = v;
@@ -82,7 +82,7 @@ class _SuwaryshPlanState extends State<SuwaryshPlan> {
             decoration: const InputDecoration(labelText: "Ekini saýlaň"),
           ),
           DropdownButtonFormField<Tapgyr>(
-            value: _selectedTapgyr,
+            initialValue: _selectedTapgyr,
             items: _selectedEkin!.tapgyrlar.map((t) => DropdownMenuItem(value: t, child: Text(t.ady))).toList(),
             onChanged: (v) => setState(() => _selectedTapgyr = v),
             decoration: const InputDecoration(labelText: "Tapgyry saýlaň"),
