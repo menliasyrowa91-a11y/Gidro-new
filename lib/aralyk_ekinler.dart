@@ -1,4 +1,5 @@
 // ignore_for_file: illegal_character
+// lib/aralyk_ekinler.dart
 import 'ekin_model.dart';
 
 final Ekin aralykEkinlerData = Ekin(
