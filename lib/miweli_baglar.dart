@@ -1,3 +1,4 @@
+// ignore_for_file: illegal_character
 // lib/miweli_baglar.dart
 import 'ekin_model.dart';
 
