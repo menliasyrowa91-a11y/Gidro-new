@@ -1,3 +1,4 @@
+// ignore_for_file: illegal_character
 // lib/pomidor.dart
 import 'ekin_model.dart';
 
