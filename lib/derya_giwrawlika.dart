@@ -1,4 +1,4 @@
-// lib/derya_giwrawlika.dart
+// ignore_for_file: illegal_character
 import 'package:flutter/material.dart';
 
 class DeryaGiwrawlika extends StatefulWidget {
@@ -29,7 +29,6 @@ class _DeryaGiwrawlikaState extends State<DeryaGiwrawlika> {
     super.dispose();
   }
 
-  // Bu ýerde BuildContext-i parametr hökmünde berýäris
   void _calculate(BuildContext context) {
     final bU = double.tryParse(_bUstiController.text);
     final bA = double.tryParse(_bAstyController.text);
@@ -64,18 +63,18 @@ class _DeryaGiwrawlikaState extends State<DeryaGiwrawlika> {
           padding: const EdgeInsets.all(20),
           child: Column(
             children: [
-              const Text("Derya Gidrawlika Hasaby", style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
+              const Text("Derýa Gidrawlika Hasaby", style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
               const SizedBox(height: 15),
               
-              TextField(controller: _bUstiController, decoration: const InputDecoration(labelText: "Suw usti ini (b_usti)"), keyboardType: const TextInputType.numberWithOptions(decimal: true)),
-              TextField(controller: _bAstyController, decoration: const InputDecoration(labelText: "Suw asty ini (b_asty)"), keyboardType: const TextInputType.numberWithOptions(decimal: true)),
-              TextField(controller: _hController, decoration: const InputDecoration(labelText: "Cunluk (h)"), keyboardType: const TextInputType.numberWithOptions(decimal: true)),
+              TextField(controller: _bUstiController, decoration: const InputDecoration(labelText: "Suw üstüniň ini (b_üsti)"), keyboardType: const TextInputType.numberWithOptions(decimal: true)),
+              TextField(controller: _bAstyController, decoration: const InputDecoration(labelText: "Suw astynyň ini (b_asty)"), keyboardType: const TextInputType.numberWithOptions(decimal: true)),
+              TextField(controller: _hController, decoration: const InputDecoration(labelText: "Çuňluk (h)"), keyboardType: const TextInputType.numberWithOptions(decimal: true)),
               TextField(controller: _lController, decoration: const InputDecoration(labelText: "Aralyk (L)"), keyboardType: const TextInputType.numberWithOptions(decimal: true)),
               TextField(controller: _tController, decoration: const InputDecoration(labelText: "Wagt (t)"), keyboardType: const TextInputType.numberWithOptions(decimal: true)),
               
               const SizedBox(height: 20),
               ElevatedButton(
-                onPressed: () => _calculate(context), // context-i bu ýerden iberýäris
+                onPressed: () => _calculate(context),
                 style: ElevatedButton.styleFrom(backgroundColor: const Color(0xFF059669), foregroundColor: Colors.white),
                 child: const Text("HASAPLA"),
               ),
@@ -89,7 +88,7 @@ class _DeryaGiwrawlikaState extends State<DeryaGiwrawlika> {
                     children: [
                       const Text("Netijeler:", style: TextStyle(fontWeight: FontWeight.bold)),
                       const Divider(),
-                      Text("Meydan (F): $_fResult m2"),
+                      Text("Meýdan (F): $_fResult m2"),
                       Text("Tizlik (V): $_vResult m/s"),
                       Text("Suw sarpyny (Q): $_qResult m3/s", style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: Color(0xFF065f46))),
                     ],
