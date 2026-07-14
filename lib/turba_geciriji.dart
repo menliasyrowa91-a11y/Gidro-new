@@ -1,5 +1,5 @@
 // ignore_for_file: illegal_character
-
+//lib/turba_geciriji.dart
 import 'package:flutter/material.dart';
 class TurbaGeciriji extends StatefulWidget {
   const TurbaGeciriji({super.key});
