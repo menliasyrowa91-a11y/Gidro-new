@@ -1,4 +1,5 @@
 // ignore_for_file: illegal_character
+// lib/gowaca.dart
 import 'ekin_model.dart';
 
 // 1. Ahal, Balkan, Lebap we Mary welaýatlary üçin
