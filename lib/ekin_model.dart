@@ -1,36 +1,24 @@
-// ignore_for_file: illegal_character
+// lib/ekin_model.dart
 class Tapgyr {
   final String ady;
   final int normaM3;
   final double gidroModul;
   final double baha;
   final String mohlet;
-  final String cesme; // "çeşme" ýerine "cesme"
+  final String cesme; 
   final int dowamlylykGijeGundiz; 
 
+  // Köne atlary hem kabul edýän konstruktor:
   Tapgyr({
     required this.ady,
     required this.normaM3,
     required this.gidroModul,
     required this.baha,
     required this.mohlet,
-    required this.cesme, // "çeşme" ýerine "cesme"
-    required this.dowamlylykGijeGundiz,
-  });
-}
-
-class Ekin {
-  final String ady;
-  final List<Tapgyr> tapgyrlar;
-
-  int get jemiNorma => tapgyrlar.fold(0, (sum, item) => sum + item.normaM3);
-  double get jemiBaha => tapgyrlar.fold(0.0, (sum, item) => sum + item.baha);
-
-  Ekin({required this.ady, required this.tapgyrlar});
-
-  @override
-  bool operator ==(Object other) => other is Ekin && other.ady == ady;
-  
-  @override
-  int get hashCode => ady.hashCode; 
+    required String cesme, 
+    String? çeşme, // Köne ady ýumşak görnüşde kabul edýär
+    required int dowamlylykGijeGundiz,
+    int? dowamlylyk, // Köne ady ýumşak görnüşde kabul edýär
+  }) : this.cesme = cesme ?? çeşme!, 
+       this.dowamlylykGijeGundiz = dowamlylykGijeGundiz ?? dowamlylyk!;
 }
