@@ -1,6 +1,6 @@
 // lib/data/ekin_repository.dart
 import '../ekin_model.dart'; 
-import '../gowaca_data.dart'; // Gowaça faýlyňyzyň adyny şeýle diýip üýtgediň
+import '../gowaca_data.dart'; // Eger gowaca_data.dart lib/ papkasynda bolsa şeýle galar
 import '../bugday.dart';
 import '../arpa.dart';
 import '../mekgejowen_siloslyk.dart';
@@ -22,8 +22,8 @@ import '../yorunja_yazlyk.dart';
 
 class EkinRepository {
   static List<Ekin> get allEkinler => [
-        gowacaRegion1,        // Gowaça 1
-        gowacaRegion2,        // Gowaça 2
+        gowacaRegion1,        // Bular gowaca_data.dart içindäki variable-lar
+        gowacaRegion2,        
         bugdayData,           
         arpaData,          
         mekgejowenSiloslykData, 
