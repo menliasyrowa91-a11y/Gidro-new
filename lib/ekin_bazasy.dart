@@ -1,4 +1,3 @@
-// ignore_for_file: illegal_character
 // lib/ekin_bazasy.dart
 import 'package:flutter/material.dart';
 
