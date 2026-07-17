@@ -16,14 +16,10 @@ class Tapgyr {
     required this.baha,
     required this.mohlet,
     String? cesme,
-    String? çeşme,
     int? dowamlylykGijeGundiz,
-    int? dowamlylyk,
-  })  : this.cesme = cesme ?? çeşme ?? "...",
-        this.dowamlylykGijeGundiz = dowamlylykGijeGundiz ?? dowamlylyk ?? 0;
+  })  : this.cesme = cesme ?? "...",
+        this.dowamlylykGijeGundiz = dowamlylykGijeGundiz ?? 0;
 
-  // Bu funksiýa geljekde maglumatlaryňyzy saklamaga ýa-da 
-  // internetden almaga kömek eder.
   Map<String, dynamic> toMap() {
     return {
       'ady': ady,
@@ -38,6 +34,13 @@ class Tapgyr {
 
   @override
   String toString() {
-    return 'Tapgyr(ady: $ady, norma: $normaM3, çeşme: $cesme)';
+    return 'Tapgyr(ady: $ady, norma: $normaM3, cesme: $cesme)';
   }
+}
+
+class Ekin {
+  final String ady;
+  final List<Tapgyr> tapgyrlar;
+
+  Ekin({required this.ady, required this.tapgyrlar});
 }
